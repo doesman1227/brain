@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>脳の仕組み ｜ m-note</title>
+<meta name="description" content="脳は世界をそのまま受け取ってはいない。予測し、選択し、構成している。ニューロンと脳部位の全体像から、予測符号化、記憶の再構成、千の脳理論、そして「私」という自己モデルまでを一本の流れで辿る個人的なまとめ。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ground: #eef0f3;
+    --paper: #ffffff;
+    --ink: #1b2430;
+    --ink-soft: #4c596a;
+    --ink-faint: #8b95a3;
+    --indigo: #2f4a7c;
+    --indigo-soft: #93a7c6;
+    --vermilion: #b4553f;
+    --line: #d7dce3;
+    --wash: rgba(47, 74, 124, 0.045);
+    --shadow: 0 1px 2px rgba(27, 36, 48, 0.04), 0 10px 28px rgba(27, 36, 48, 0.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #14161a;
+      --paper: #1c2028;
+      --ink: #dfe4ea;
+      --ink-soft: #a4aebc;
+      --ink-faint: #6d7784;
+      --indigo: #8fb0e0;
+      --indigo-soft: #47597c;
+      --vermilion: #d98a70;
+      --line: #2a3039;
+      --wash: rgba(143, 176, 224, 0.06);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 10px 28px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif;
+    font-size: 16px;
+    line-height: 1.95;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "palt";
+  }
+
+  .serif { font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif; }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  a { color: var(--indigo); }
+  a:focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; border-radius: 2px; }
+
+  /* ---------- header ---------- */
+  .top {
+    border-bottom: 1px solid var(--line);
+  }
+  .top .wrap {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 16px; padding-top: 18px; padding-bottom: 18px;
+  }
+  .sitemark {
+    font-size: 11px; letter-spacing: .2em; color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+  .back { font-size: 13px; text-decoration: none; color: var(--ink-soft); }
+  .back:hover { color: var(--indigo); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 76px 0 12px; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: .22em; color: var(--indigo);
+    text-transform: uppercase; margin: 0 0 26px;
+  }
+  h1 {
+    font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-weight: 600; font-size: clamp(25px, 6.2vw, 36px); line-height: 1.72;
+    margin: 0 0 30px; letter-spacing: .01em;
+  }
+  h1 .em { color: var(--indigo); }
+  .lede { color: var(--ink-soft); margin: 0 0 8px; font-size: 15.5px; }
+
+  /* hero motif */
+  .motif { display: block; width: 100%; height: auto; margin: 44px 0 0; }
+  .motif .p-line { stroke: var(--indigo); stroke-width: 1.5; fill: none; }
+  .motif .e-line { stroke: var(--vermilion); stroke-width: 1.5; fill: none; stroke-dasharray: 6 7; animation: drift 3.4s linear infinite; }
+  .motif text { font-size: 11px; letter-spacing: .14em; }
+  .motif .t-p { fill: var(--indigo); }
+  .motif .t-e { fill: var(--vermilion); }
+  @keyframes drift { to { stroke-dashoffset: -52; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .motif .e-line { animation: none; }
+  }
+
+  /* ---------- toc ---------- */
+  .toc { margin: 64px 0 0; border-top: 1px solid var(--line); }
+  .toc a {
+    display: flex; align-items: baseline; gap: 16px;
+    padding: 13px 2px; border-bottom: 1px solid var(--line);
+    text-decoration: none; color: var(--ink);
+  }
+  .toc a:hover { background: var(--wash); }
+  .toc .n { font-size: 11px; letter-spacing: .12em; color: var(--ink-faint); min-width: 22px; }
+  .toc .t { font-size: 14.5px; }
+  .toc .s { margin-left: auto; font-size: 12px; color: var(--ink-faint); text-align: right; }
+
+  /* ---------- chapters ---------- */
+  .ch {
+    margin: 80px 0;
+    border-left: 1px solid var(--indigo-soft);
+    padding-left: 28px;
+  }
+  .ch-label {
+    font-size: 11px; letter-spacing: .22em; color: var(--indigo);
+    margin: 0 0 10px;
+  }
+  h2 {
+    font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-weight: 600; font-size: clamp(19px, 4.6vw, 23px); line-height: 1.75;
+    margin: 0 0 26px;
+  }
+  h3 {
+    font-size: 14px; font-weight: 700; letter-spacing: .04em;
+    color: var(--ink-soft); margin: 44px 0 14px;
+  }
+  .ch p { margin: 0 0 1.45em; }
+  .ch p:last-child { margin-bottom: 0; }
+  .err { color: var(--vermilion); font-weight: 500; }
+
+  blockquote {
+    margin: 0 0 1.6em; padding: 0;
+    font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-size: 17px; line-height: 1.9; color: var(--indigo);
+  }
+
+  /* ---------- figures ---------- */
+  .fig {
+    margin: 34px 0; padding: 22px 20px 18px;
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: 3px; box-shadow: var(--shadow);
+  }
+  .fig svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .fig figcaption {
+    margin-top: 16px; font-size: 12.5px; line-height: 1.75; color: var(--ink-faint);
+  }
+  .fig text {
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: 13px; fill: var(--ink-soft);
+  }
+  .fig .lb { font-size: 11px; letter-spacing: .1em; fill: var(--ink-faint); }
+  .fig .ti { fill: var(--indigo); font-size: 12px; }
+  .fig .te { fill: var(--vermilion); font-size: 12px; }
+  .s-i { stroke: var(--indigo); fill: none; stroke-width: 1.5; }
+  .s-e { stroke: var(--vermilion); fill: none; stroke-width: 1.5; stroke-dasharray: 5 5; }
+  .s-l { stroke: var(--line); fill: none; stroke-width: 1; }
+  .s-f { stroke: var(--ink-faint); fill: none; stroke-width: 1; }
+  .box { fill: var(--wash); stroke: var(--indigo-soft); stroke-width: 1; }
+  .f-i { fill: var(--indigo); }
+  .f-e { fill: var(--vermilion); }
+  #ar-i path { fill: var(--indigo); }
+  #ar-e path { fill: var(--vermilion); }
+  #ar-f path { fill: var(--ink-faint); }
+
+  /* ---------- table ---------- */
+  .tbl-scroll { overflow-x: auto; margin: 28px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420px; }
+  th, td { text-align: left; padding: 11px 10px 11px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 700; color: var(--ink-soft); font-size: 12px; letter-spacing: .08em; white-space: nowrap; }
+  td:first-child { white-space: nowrap; color: var(--indigo); font-weight: 500; }
+
+  /* ---------- open question block (signature) ---------- */
+  .q {
+    position: relative;
+    margin: 40px 0 0 -28px; padding: 4px 0 4px 27px;
+  }
+  .q::before {
+    content: ""; position: absolute; left: -1px; top: 0; bottom: 0; width: 1px;
+    background: repeating-linear-gradient(to bottom, var(--vermilion) 0 4px, var(--ground) 4px 9px);
+  }
+  .q .q-label {
+    font-size: 11px; letter-spacing: .22em; color: var(--vermilion); margin: 0 0 10px;
+  }
+  .q ul { margin: 0; padding-left: 1.1em; }
+  .q li { margin: 0 0 .5em; font-size: 14.5px; color: var(--ink-soft); line-height: 1.85; }
+  .q li:last-child { margin-bottom: 0; }
+
+  /* ---------- footer ---------- */
+  .foot { margin-top: 96px; border-top: 1px solid var(--line); }
+  .foot .wrap { padding-top: 32px; padding-bottom: 56px; }
+  .foot p { margin: 0 0 12px; font-size: 12.5px; line-height: 1.85; color: var(--ink-faint); }
+  .foot a { font-size: 13px; }
+
+  @media (max-width: 560px) {
+    body { font-size: 15.5px; }
+    .hero { padding-top: 56px; }
+    .ch { padding-left: 18px; margin: 64px 0; }
+    .q { margin-left: -18px; padding-left: 17px; }
+    .fig { padding: 16px 14px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <marker id="ar-i" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+    <marker id="ar-e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+    <marker id="ar-f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <span class="sitemark">Brain</span>
+    <a class="back" href="../">← m-note トップ</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow">How the Brain Works</p>
+    <h1>脳は世界を受け取っていない。<br><span class="em">予測し、選択し、作っている。</span></h1>
+    <p class="lede">目が捉えた光がそのまま像になるわけではない。脳はまず「こう見えるはずだ」と予測を立て、感覚器はそのズレだけを返す。私たちが見ている世界は、外にあるものの複製ではなく、脳が作った最ももっともらしい仮説だった。</p>
+    <p class="lede">脳という臓器の全体像から、予測と誤差、記憶の作り直し、そして「私」という感覚が立ち上がるところまでを、順に辿る。</p>
+
+    <svg class="motif" viewBox="0 0 640 46" role="img" aria-label="予測が脳から感覚へ向かい、誤差だけが感覚から脳へ返る">
+      <title>予測と誤差</title>
+      <path class="p-line" d="M62 16 H616" marker-end="url(#ar-i)"/>
+      <path class="e-line" d="M616 34 H62" marker-end="url(#ar-e)"/>
+      <text class="t-p" x="0" y="20">予測</text>
+      <text class="t-e" x="0" y="38">誤差</text>
+    </svg>
+  </div>
+
+  <nav class="toc" aria-label="目次">
+    <a href="#ch1"><span class="n">01</span><span class="t">脳という臓器</span><span class="s">構造</span></a>
+    <a href="#ch2"><span class="n">02</span><span class="t">脳は誤差だけを見ている</span><span class="s">予測</span></a>
+    <a href="#ch3"><span class="n">03</span><span class="t">見ているのは、選ばれた世界</span><span class="s">選択</span></a>
+    <a href="#ch4"><span class="n">04</span><span class="t">思い出すとは、作り直すこと</span><span class="s">再構成</span></a>
+    <a href="#ch5"><span class="n">05</span><span class="t">理性の脳は、なかった</span><span class="s">統合</span></a>
+    <a href="#ch6"><span class="n">06</span><span class="t">千の脳と、「私」</span><span class="s">並列</span></a>
+    <a href="#ch7"><span class="n">07</span><span class="t">何もしない時間が、整理している</span><span class="s">空白</span></a>
+    <a href="#ch8"><span class="n">08</span><span class="t">残っている問い</span><span class="s">未知</span></a>
+  </nav>
+
+  <section class="ch" id="ch1">
+    <p class="ch-label">構造</p>
+    <h2>脳という臓器</h2>
+
+    <p>この先の話に入る前に、いちど部品表を広げておきたい。脳は約1.4キログラム、体重のわずか2%ほどの器官で、豆腐に近いやわらかさをしている。そこに、細胞・部位・ネットワークという三つのスケールが折り重なっている。</p>
+
+    <h3>細胞 — 電気で走り、化学で渡す</h3>
+
+    <p>脳にはおよそ1000億個のニューロン（神経細胞）があり、そのひとつひとつが数千から数万の他のニューロンとつながっている。結合の総数は100兆を超えると見積もられている。</p>
+
+    <p>ニューロンの中では、信号は電気として走る。だが細胞の末端まで来ると、そこには隙間がある。<strong>シナプス</strong>と呼ばれるこのわずかな間隙を越えるとき、電気信号はいったん化学物質に姿を変える。放出された神経伝達物質が向かい側の受容体に届き、そこでふたたび電気信号に戻る。走って、渡して、また走る。この受け渡しが脳のすべての活動の土台になっている。</p>
+
+    <p>神経伝達物質にはそれぞれ役回りがある。ドーパミンは「予期していたより良かった」という差分を伝え、セロトニンは気分や覚醒の水準を整える。GABAは活動を抑える側にまわり、アセチルコリンは注意と記憶の定着に関わる。感情や意欲と呼ばれるものは、こうした物質の濃度と受け取り側の感度の上に立っている。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 200" role="img" aria-labelledby="f1a-t">
+        <title id="f1a-t">ニューロンとシナプス</title>
+        <path class="s-f" d="M88 80 L50 56 M86 95 L44 92 M88 110 L52 128 M99 76 L80 44"/>
+        <circle class="box" cx="112" cy="95" r="24"/>
+        <path class="s-i" d="M136 95 H322" marker-end="url(#ar-i)"/>
+        <ellipse class="box" cx="342" cy="95" rx="13" ry="18"/>
+        <circle class="f-e" cx="364" cy="86" r="3.5"/>
+        <circle class="f-e" cx="372" cy="99" r="3.5"/>
+        <circle class="f-e" cx="381" cy="88" r="3.5"/>
+        <circle class="f-e" cx="387" cy="101" r="3.5"/>
+        <path class="s-i" d="M400 95 H474" marker-end="url(#ar-i)"/>
+        <circle class="box" cx="500" cy="95" r="24"/>
+        <path class="s-f" d="M522 80 L560 58 M524 95 L568 92 M522 110 L558 128"/>
+        <path class="s-l" d="M62 158 V120 M120 158 V122 M232 158 V102 M376 158 V118 M376 44 V76"/>
+        <text class="lb" x="62" y="176" text-anchor="middle">樹状突起</text>
+        <text class="lb" x="120" y="176" text-anchor="middle">細胞体</text>
+        <text class="lb" x="232" y="176" text-anchor="middle">軸索</text>
+        <text class="lb" x="376" y="176" text-anchor="middle">シナプス</text>
+        <text class="ti" x="232" y="82" text-anchor="middle">電気信号</text>
+        <text class="te" x="376" y="36" text-anchor="middle">神経伝達物質</text>
+      </svg>
+      <figcaption>ニューロンの内側は電気、ニューロンとニューロンの間は化学。この切り替えが起きる場所が、強くも弱くもなる。</figcaption>
+    </figure>
+
+    <h3>部位 — 古い層の上に、新しい層</h3>
+
+    <p>脳は設計図から一度に作られたのではなく、進化の順に積み重なってきた。生命の維持を担う古い層の上に、情動と記憶の層が乗り、その外側を新皮質が覆っている。</p>
+
+    <div class="tbl-scroll">
+      <table>
+        <thead>
+          <tr><th>部位</th><th>おもなはたらき</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>脳幹</td><td>呼吸・心拍・体温・覚醒。止まれば生命が止まる、いちばん古い層。</td></tr>
+          <tr><td>小脳</td><td>運動の微調整とタイミング。自転車の乗り方のような、言葉にならない記憶。</td></tr>
+          <tr><td>視床</td><td>感覚情報の中継所。嗅覚を除くほぼすべての入力が、ここを通って皮質へ向かう。</td></tr>
+          <tr><td>扁桃体</td><td>情動の警報装置。危険かどうかを、意識が判断するより先に判定する。</td></tr>
+          <tr><td>海馬</td><td>新しい出来事の記憶をつくり、索引をつける。場所の記憶にも関わる。</td></tr>
+          <tr><td>前頭葉</td><td>計画・抑制・意思決定。とくに前頭前野は、いま必要ないものを抑える役をもつ。</td></tr>
+          <tr><td>頭頂葉</td><td>空間の把握と身体の感覚。自分の体がどこにあるかを組み立てる。</td></tr>
+          <tr><td>側頭葉</td><td>聴覚、言語の理解、物体の認識。海馬と隣り合い、記憶とも近い。</td></tr>
+          <tr><td>後頭葉</td><td>視覚。色・形・動き・奥行きを、別々の領域で並行して処理する。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 400" role="img" aria-labelledby="f1b-t">
+        <title id="f1b-t">脳の模式図と主要な部位</title>
+        <ellipse class="box" cx="300" cy="170" rx="210" ry="118"/>
+        <path class="s-f" style="stroke-dasharray:4 5" d="M292 54 L318 178 M172 176 L346 206 M452 104 L418 200"/>
+        <path class="box" d="M336 236 C 332 280 336 320 342 356 L 378 350 C 368 314 366 278 372 234 Z"/>
+        <circle cx="470" cy="280" r="52" style="fill:var(--paper);stroke:var(--indigo-soft);stroke-width:1"/>
+        <path class="s-l" d="M428 254 C 456 262 486 264 518 262 M422 280 C 452 288 486 290 522 286 M428 306 C 456 312 484 314 512 310"/>
+        <ellipse cx="330" cy="192" rx="26" ry="15" style="fill:var(--paper);stroke:var(--vermilion);stroke-width:1.5"/>
+        <path style="fill:none;stroke:var(--vermilion);stroke-width:2.5" d="M258 240 C 276 266 312 262 326 240"/>
+        <circle class="f-e" cx="240" cy="230" r="10"/>
+        <text x="185" y="146" text-anchor="middle">前頭葉</text>
+        <text x="372" y="106" text-anchor="middle">頭頂葉</text>
+        <text x="474" y="168" text-anchor="middle">後頭葉</text>
+        <text x="178" y="262" text-anchor="middle">側頭葉</text>
+        <text x="470" y="286" text-anchor="middle">小脳</text>
+        <text class="te" x="330" y="197" text-anchor="middle" style="font-size:11px">視床</text>
+        <text class="te" x="222" y="234" text-anchor="end">扁桃体</text>
+        <text class="te" x="292" y="284" text-anchor="middle">海馬</text>
+        <path class="s-l" d="M398 342 L 378 338"/>
+        <text x="404" y="347">脳幹</text>
+        <text class="lb" x="80" y="330">左が前、右が後ろ</text>
+        </svg>
+      <figcaption>外側を覆うのが新皮質で、四つの葉に分かれる。内側の朱色は大脳辺縁系。視床がほぼすべての感覚を中継し、扁桃体と海馬が情動と記憶を担う。</figcaption>
+    </figure>
+
+    <h3>ネットワーク — 部位ではなく、つながり</h3>
+
+    <p>部位と役割の対応は入口としては便利だが、そこで止まると見誤る。実際の機能は、離れた領域どうしの結合パターンから生まれている。同じ部位が、どのネットワークの一部として動いているかで違う仕事をする。</p>
+
+    <p>よく知られた三つ組がある。課題に集中しているときに立ち上がる<strong>実行系ネットワーク</strong>、何もしていないときに活発になる<strong>デフォルト・モード・ネットワーク</strong>、そしてその二つを切り替える<strong>サリエンス・ネットワーク</strong>。サリエンスは「いま注意を向けるに値するものが現れたか」を見張る役で、これは後で出てくる誤差の話と地続きになる。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 220" role="img" aria-labelledby="f1c-t">
+        <title id="f1c-t">三つのネットワークの関係</title>
+        <rect class="box" x="20" y="56" width="200" height="100" rx="3"/>
+        <rect class="box" x="420" y="56" width="200" height="100" rx="3"/>
+        <circle cx="320" cy="106" r="52" style="fill:var(--paper);stroke:var(--vermilion);stroke-width:1.5"/>
+        <path class="s-e" d="M262 106 H228" marker-end="url(#ar-e)" marker-start="url(#ar-e)"/>
+        <path class="s-e" d="M378 106 H412" marker-end="url(#ar-e)" marker-start="url(#ar-e)"/>
+        <text x="120" y="100" text-anchor="middle">実行系</text>
+        <text x="120" y="126" text-anchor="middle">ネットワーク</text>
+        <text class="lb" x="120" y="40" text-anchor="middle">集中しているとき</text>
+        <text x="520" y="100" text-anchor="middle">デフォルト・モード</text>
+        <text x="520" y="126" text-anchor="middle">ネットワーク</text>
+        <text class="lb" x="520" y="40" text-anchor="middle">ぼんやりしているとき</text>
+        <text class="te" x="320" y="100" text-anchor="middle">サリエンス</text>
+        <text class="te" x="320" y="122" text-anchor="middle" style="font-size:11px">切り替え役</text>
+        <text class="lb" x="320" y="196" text-anchor="middle">二つは同時には立ち上がりにくい</text>
+      </svg>
+      <figcaption>集中とぼんやりは、どちらかが強まればどちらかが引く関係にある。その配分を決めているのが、注意を向けるべきものを検出するサリエンス・ネットワーク。</figcaption>
+    </figure>
+
+    <h3>代謝と可塑性 — 使われた線が、残る</h3>
+
+    <p>脳は体重の2%ほどしかないのに、全エネルギーの約20%を消費する。しかもその大半は、何か特別な作業をしているときではなく、常時の維持活動に使われている。脳に「休んでいる状態」はない。</p>
+
+    <p>そして脳は配線が固定された機械ではない。使われたシナプスは強まり、使われないシナプスは刈り込まれていく。経験が回路そのものを書き換えるこの性質を<strong>可塑性</strong>という。今日くり返したことが、明日の脳の形を少しだけ変えている。</p>
+
+    <p>ここまでを並べると、脳は役割を分担する精巧な機械のように見える。しかし実際に起きていることは、もっと奇妙だった。</p>
+  </section>
+
+  <section class="ch" id="ch2">
+    <p class="ch-label">予測</p>
+    <h2>脳は誤差だけを見ている</h2>
+
+    <p>脳はカメラのように外の世界を写し取っている——直感的にはそう思いたくなる。実際の仕組みは、ほとんど逆だった。</p>
+
+    <p>脳はつねに「次に何が起こるか」「何が見えるはずか」を過去の経験から予測し、自前でシミュレーションを走らせている。目や耳から入ってくる情報は、その予測を丸ごと置き換えるのではない。予測と現実の<span class="err">ズレ</span>だけが上へ報告され、予測の修正に使われる。予測が当たっているかぎり、感覚からの信号はほとんど上がってこない。この考え方は<strong>予測符号化</strong>、より大きな枠組みでは<strong>自由エネルギー原理</strong>と呼ばれている。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 230" role="img" aria-labelledby="f2-t">
+        <title id="f2-t">予測と誤差のループ</title>
+        <rect class="box" x="20" y="80" width="130" height="70" rx="3"/>
+        <rect class="box" x="250" y="80" width="140" height="70" rx="3"/>
+        <rect class="box" x="490" y="80" width="130" height="70" rx="3"/>
+        <path class="s-f" d="M158 115 H242" marker-end="url(#ar-f)"/>
+        <path class="s-i" d="M508 76 C 470 22 380 22 334 70" marker-end="url(#ar-i)"/>
+        <path class="s-e" d="M352 156 C 396 206 466 208 504 162" marker-end="url(#ar-e)"/>
+        <text x="85" y="122" text-anchor="middle">世界</text>
+        <text x="320" y="110" text-anchor="middle">感覚器</text>
+        <text class="lb" x="320" y="134" text-anchor="middle">目・耳・皮膚</text>
+        <text x="555" y="122" text-anchor="middle">脳</text>
+        <text class="ti" x="420" y="28" text-anchor="middle">予測「こう見えるはずだ」</text>
+        <text class="te" x="428" y="214" text-anchor="middle">ズレた分だけが返る</text>
+      </svg>
+      <figcaption>太い流れは上から下へ向かう予測のほう。感覚器から脳へ上がるのは、予測が外れた分だけ。</figcaption>
+    </figure>
+
+    <p>この仕組みがあるから、私たちは雑踏の中でも知人の声を聞き分けられるし、半分隠れた物体を全体として認識できる。足りない部分は、予測が埋めている。処理すべき情報量も劇的に減る。すべてを毎回ゼロから見ていたら、脳は追いつかない。</p>
+
+    <p>同時にこれは、思い込みや偏見がなぜ生じるかの説明にもなっている。予測が強すぎると、感覚入力よりも予測のほうが優先されてしまう。錯視はその極端な例で、目に届いている光は同じなのに、文脈が変われば見え方が変わる。私たちは、自分が見たいように世界を見ている——その科学的な裏づけがここにある。</p>
+
+    <p>どの情報をどれだけ信頼するか、という重みづけのバランスが崩れた状態として、いくつかの精神疾患を説明しようとする研究もある。逆に言えば、予測は書き換えられる余地があるということでもある。思い込みを検証して更新していく<a href="../cbt/">認知行動療法</a>のアプローチは、この層に働きかけている。</p>
+
+    <div class="q">
+      <p class="q-label">残る問い</p>
+      <ul>
+        <li>「意識」や「私」という感覚も、予測誤差を最小化するための仕組みが生んだ副産物なのだろうか。</li>
+        <li>自分の脳が立てている予測に、どこまで自分で気づき、意図的に書き換えられるのか。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ch" id="ch3">
+    <p class="ch-label">選択</p>
+    <h2>見ているのは、選ばれた世界</h2>
+
+    <p>人間の視野は両目で200度近くあり、感覚としては魚眼レンズに近い広さを捉えている。ところが実際に意識を向けてフォーカスしている範囲は、はるかに狭い。標準レンズ一本ぶんくらいの幅しか、はっきりとは見ていない。</p>
+
+    <p>視野に入っている情報、意識が向いている情報、そして記憶として残る情報。この三つは同じではなく、後になるほど狭くなっていく。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 290" role="img" aria-labelledby="f3-t">
+        <title id="f3-t">視野・注意・記憶の三層</title>
+        <rect x="20" y="26" width="600" height="236" rx="3" style="fill:var(--wash);stroke:var(--indigo-soft);stroke-width:1"/>
+        <rect x="146" y="76" width="348" height="152" rx="3" style="fill:var(--wash);stroke:var(--indigo-soft);stroke-width:1"/>
+        <rect x="252" y="116" width="136" height="76" rx="3" style="fill:var(--wash);stroke:var(--indigo);stroke-width:1.5"/>
+        <text class="lb" x="34" y="50">視野に入っている</text>
+        <text class="lb" x="160" y="100">意識が向いている</text>
+        <text class="ti" x="320" y="150" text-anchor="middle">記憶に</text>
+        <text class="ti" x="320" y="172" text-anchor="middle">残る</text>
+        <text class="lb" x="34" y="252">およそ200度</text>
+        <text class="lb" x="494" y="252" text-anchor="end">一日のほとんどは、ここまで届かない</text>
+      </svg>
+      <figcaption>広く受け取り、狭く選ぶ。選ばれなかったものは、見えていなかったのとほとんど同じことになる。</figcaption>
+    </figure>
+
+    <p>では何が選ばれるのか。危険そうなもの、いま自分の目的に関係するもの、予測から外れた意外なもの、感情が動いたもの。優先順位の先頭に並ぶのはそのあたりで、これは前章の誤差の話とそのままつながっている。予測どおりのものは、わざわざ意識に上げる必要がない。</p>
+
+    <p>この絞り込みは、能力の不足ではなく最適化と考えたほうがいい。もし世界のあらゆる情報を同じ解像度で知覚できてしまったら、脳は処理しきれず、正常な状態を保てなくなるだろう。人間の知覚には、うまく効いている限界がある。</p>
+
+    <p>そして限界の形は生き物ごとに違う。犬は匂いの世界に、コウモリは反響の世界に住んでいる。機械はさらに別で、カメラにLiDARや赤外線やミリ波レーダーを足した知覚は、人間の視覚を高性能にしたものというより、まったく別の知覚システムと考えたほうが面白い。</p>
+
+    <div class="q">
+      <p class="q-label">残る問い</p>
+      <ul>
+        <li>私たちが見ているのは「世界」なのか、それとも脳が選択して構成した世界なのか。</li>
+        <li>人間が知覚できない情報には何があり、他の生物にはどんな世界が見えているのか。</li>
+        <li>機械が人間を超えた知覚を持ったとき、その機械にとって世界はどう立ち上がるのか。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ch" id="ch4">
+    <p class="ch-label">再構成</p>
+    <h2>思い出すとは、作り直すこと</h2>
+
+    <p>何かを思い出すとき、頭の中で何が起きているのか。自分の体感を観察してみると、過去の映像が再生されるというより、いま見ている世界が一瞬さえぎられて、別のものが立ち上がる感覚に近い。</p>
+
+    <p>浮かんでくるのは動画ではなく、静止画に近い。しかも鮮明な写真ではなく「印象」に近い。色や細部は、たぶん保存されていない。そして最初から言葉にはなっていない。印象が浮かび、形をつくり、そこから言語化する。この変換のところで、頭の中にある感覚と実際に出てくる言葉とのあいだにズレが生まれ、もどかしさが残る。</p>
+
+    <p>思い出すときに目を閉じたり視線を外したりするのは、外界からの入力を減らして、内側のイメージを扱いやすくする動きだと考えると腑に落ちる。「思い出すときは左上を見る」といった固定的な話に根拠はないが、注意を外から内へ切り替える動作そのものは実感とつながる。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 260" role="img" aria-labelledby="f4-t">
+        <title id="f4-t">記憶の再構成</title>
+        <rect class="s-f" x="36" y="62" width="22" height="22" style="fill:var(--wash)"/>
+        <circle class="s-f" cx="112" cy="82" r="12" style="fill:var(--wash)"/>
+        <rect class="s-f" x="58" y="112" width="16" height="16" style="fill:var(--wash)"/>
+        <circle class="s-f" cx="126" cy="132" r="9" style="fill:var(--wash)"/>
+        <rect class="s-f" x="40" y="152" width="20" height="20" style="fill:var(--wash)"/>
+        <circle class="s-f" cx="104" cy="172" r="11" style="fill:var(--wash)"/>
+        <path class="s-i" d="M168 122 H236" marker-end="url(#ar-i)"/>
+        <rect class="box" x="244" y="82" width="150" height="80" rx="3"/>
+        <path class="s-i" d="M402 122 H466" marker-end="url(#ar-i)"/>
+        <rect x="474" y="82" width="146" height="80" rx="3" style="fill:var(--wash);stroke:var(--indigo);stroke-width:1.5;stroke-dasharray:4 4"/>
+        <path class="s-e" d="M88 238 V202" marker-end="url(#ar-e)"/>
+        <text class="lb" x="88" y="34" text-anchor="middle">記憶の断片</text>
+        <text x="319" y="116" text-anchor="middle">いまの脳</text>
+        <text class="lb" x="319" y="140" text-anchor="middle">いまの予測・文脈・気分</text>
+        <text x="547" y="116" text-anchor="middle">立ち上がる像</text>
+        <text class="lb" x="547" y="140" text-anchor="middle">そのつど作られる</text>
+        <text class="te" x="88" y="254" text-anchor="middle">匂い — 意識を通らない入口</text>
+      </svg>
+      <figcaption>保存された映像を取り出しているのではなく、断片といまの状態から、そのたびに組み立て直している。だから同じ出来事でも、思い出すたびに少し違う。</figcaption>
+    </figure>
+
+    <p>過去の体験は、視覚・聴覚・嗅覚・味覚・触覚、そしてそのときの感情が組み合わさって残っているらしい。能動的に探しにいくときは視覚的なイメージが比較的取り出しやすく、声や物音も「聞こえた気がする」という形で蘇ることがある。</p>
+
+    <p>不思議なのは嗅覚だ。匂いそのものを思い出そうとしても、ほとんど出てこない。ところが実際にその香りを嗅ぐと、突然その頃の記憶が立ち上がる。ここには構造的な理由がある。ほかの感覚が視床という中継所を経由して皮質へ向かうのに対し、<span class="err">嗅覚だけは視床を通らず、扁桃体や海馬へほぼ直接つながっている</span>。情動と記憶に、近道で届いてしまう。</p>
+
+    <p>自分から記憶を探しにいく場合と、感覚をきっかけに呼び起こされる場合とでは、体験の仕方がまるで違う。前者は組み立てる作業で、後者は不意に立ち上がるものだ。</p>
+
+    <div class="q">
+      <p class="q-label">残る問い</p>
+      <ul>
+        <li>最初に浮かぶ「静止画」は、本当に視覚的な画像なのか、それとも画像のような印象なのか。</li>
+        <li>思い出すときに、実際には存在しない色や細部を、脳はどれだけ補っているのか。</li>
+        <li>「思い出す」と「想像する」は、どこまで同じ仕組みなのか。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ch" id="ch5">
+    <p class="ch-label">統合</p>
+    <h2>理性の脳は、なかった</h2>
+
+    <p>新皮質、とりわけ前頭前野が大きくなったことで、計画・抑制・柔軟な思考・注意・文脈理解といった人間らしい能力が生まれた。ここまでは、よく語られるとおりだ。</p>
+
+    <p>そこから自然に、こんな見取り図が浮かぶ。扁桃体のような古い領域が本能や感情を生み、その上に乗った新皮質がそれを制御している——理性が感情を統べる二層構造。分かりやすいが、この図は正確ではない。</p>
+
+    <p>感情と認知は分離していない。相互に影響し合っている。新皮質は感情を支配する司令塔ではなく、感覚・記憶・情動といった情報を統合し、状況に応じて行動を調整するネットワークの一部として働いている。判断のたびに情動は参照されているし、情動の側も文脈の解釈によって形を変える。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 250" role="img" aria-labelledby="f5-t">
+        <title id="f5-t">二層構造という見方と、実際のネットワーク</title>
+        <rect class="box" x="36" y="66" width="180" height="54" rx="3"/>
+        <rect class="box" x="36" y="140" width="180" height="54" rx="3"/>
+        <path class="s-f" d="M126 122 V138" marker-end="url(#ar-f)"/>
+        <path style="stroke:var(--vermilion);stroke-width:2;fill:none" d="M28 58 L224 202 M224 58 L28 202"/>
+        <text x="126" y="99" text-anchor="middle">理性</text>
+        <text x="126" y="173" text-anchor="middle">感情</text>
+        <text class="lb" x="126" y="42" text-anchor="middle">かつての見取り図</text>
+        <path class="s-f" d="M258 130 H306" marker-end="url(#ar-f)"/>
+        <path class="s-i" style="stroke-width:1" d="M470 88 L546 118 M470 88 L410 118 M470 88 L524 190 M470 88 L420 190 M410 118 L524 190 M410 118 L420 190 M546 118 L420 190 M546 118 L524 190 M420 190 L524 190 M410 118 L546 118"/>
+        <circle cx="470" cy="88" r="27" style="fill:var(--paper);stroke:var(--indigo);stroke-width:1.5"/>
+        <circle cx="546" cy="118" r="27" style="fill:var(--paper);stroke:var(--indigo);stroke-width:1.5"/>
+        <circle cx="524" cy="190" r="27" style="fill:var(--paper);stroke:var(--indigo);stroke-width:1.5"/>
+        <circle cx="420" cy="190" r="27" style="fill:var(--paper);stroke:var(--indigo);stroke-width:1.5"/>
+        <circle cx="410" cy="118" r="27" style="fill:var(--paper);stroke:var(--indigo);stroke-width:1.5"/>
+        <text class="ti" x="470" y="93" text-anchor="middle" style="font-size:11px">感覚</text>
+        <text class="ti" x="546" y="123" text-anchor="middle" style="font-size:11px">記憶</text>
+        <text class="ti" x="524" y="195" text-anchor="middle" style="font-size:11px">情動</text>
+        <text class="ti" x="420" y="195" text-anchor="middle" style="font-size:11px">運動</text>
+        <text class="ti" x="410" y="123" text-anchor="middle" style="font-size:11px">言語</text>
+        <text class="lb" x="478" y="42" text-anchor="middle">実際に近いのは、こちら</text>
+      </svg>
+      <figcaption>上下の階層ではなく、相互に結ばれた網。どれかが司令塔なのではなく、そのときどきで重みが移っていく。</figcaption>
+    </figure>
+
+    <p>進化についても同じことが言える。新皮質は単純に大きくなったのではない。連合野の発達や、領域どうしのつながりのほうが重要だった。「脳が大きくなった」というより「複雑な情報を統合し、調整する能力が高度化した」と捉えるほうが近い。</p>
+
+    <p>部位に役割の名札を貼っていく見方は、入口としては有効だが、そこで止まると本体を取り逃がす。脳でいちばん効いているのは、部品ではなく配線のほうだった。</p>
+
+    <div class="q">
+      <p class="q-label">残る問い</p>
+      <ul>
+        <li>電気信号と神経伝達物質のやり取りしかない脳から、なぜ「私は今ここにいる」という主観的な体験が生まれるのか。</li>
+        <li>統合と調整の能力が高度化した先に、なぜ経験するという出来事が現れるのか。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ch" id="ch6">
+    <p class="ch-label">並列</p>
+    <h2>千の脳と、「私」</h2>
+
+    <p>脳の中に小さなスクリーンがあって、そこに世界の映像が映っている——そういうことではない。色・形・動き・奥行きはそれぞれ別の領域で並行して処理され、その活動の全体として「この場所にこの物体がある」という状態が成立している。どこか一箇所で最後に合成される中央のステージは、見つかっていない。</p>
+
+    <p>この方向をさらに押し進めたのが<strong>千の脳理論</strong>だ。脳はひとつの巨大な世界モデルを持つのではなく、多数の皮質コラムがそれぞれに世界のモデルを作り、それらが協調して結論を出している、という考え方をとる。</p>
+
+    <p>印象的なのは、モデルの中身が特徴のリストではないという点だ。「カップ」を認識するとき、脳は丸い・取っ手があるといった特徴を並べているのではなく、取っ手がカップのどこにあるかという構造・位置関係までを座標系として持っている。だから角度が変わっても、一部が隠れても、同じものだと分かる。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 280" role="img" aria-labelledby="f6-t">
+        <title id="f6-t">多数の皮質コラムが、同じ対象の別々のモデルを持つ</title>
+        <g class="s-l" style="fill:var(--wash)">
+          <rect x="20" y="52" width="16" height="16"/><rect x="42" y="52" width="16" height="16"/><rect x="64" y="52" width="16" height="16"/><rect x="86" y="52" width="16" height="16"/><rect x="108" y="52" width="16" height="16"/><rect x="130" y="52" width="16" height="16"/><rect x="152" y="52" width="16" height="16"/><rect x="174" y="52" width="16" height="16"/><rect x="196" y="52" width="16" height="16"/><rect x="218" y="52" width="16" height="16"/>
+          <rect x="20" y="74" width="16" height="16"/><rect x="42" y="74" width="16" height="16"/><rect x="64" y="74" width="16" height="16"/><rect x="86" y="74" width="16" height="16"/><rect x="108" y="74" width="16" height="16"/><rect x="130" y="74" width="16" height="16"/><rect x="152" y="74" width="16" height="16"/><rect x="174" y="74" width="16" height="16"/><rect x="196" y="74" width="16" height="16"/><rect x="218" y="74" width="16" height="16"/>
+          <rect x="20" y="96" width="16" height="16"/><rect x="42" y="96" width="16" height="16"/><rect x="64" y="96" width="16" height="16"/><rect x="86" y="96" width="16" height="16"/><rect x="108" y="96" width="16" height="16"/><rect x="130" y="96" width="16" height="16"/><rect x="152" y="96" width="16" height="16"/><rect x="174" y="96" width="16" height="16"/><rect x="196" y="96" width="16" height="16"/><rect x="218" y="96" width="16" height="16"/>
+          <rect x="20" y="118" width="16" height="16"/><rect x="42" y="118" width="16" height="16"/><rect x="64" y="118" width="16" height="16"/><rect x="86" y="118" width="16" height="16"/><rect x="108" y="118" width="16" height="16"/><rect x="130" y="118" width="16" height="16"/><rect x="152" y="118" width="16" height="16"/><rect x="174" y="118" width="16" height="16"/><rect x="196" y="118" width="16" height="16"/><rect x="218" y="118" width="16" height="16"/>
+          <rect x="20" y="140" width="16" height="16"/><rect x="42" y="140" width="16" height="16"/><rect x="64" y="140" width="16" height="16"/><rect x="86" y="140" width="16" height="16"/><rect x="108" y="140" width="16" height="16"/><rect x="130" y="140" width="16" height="16"/><rect x="152" y="140" width="16" height="16"/><rect x="174" y="140" width="16" height="16"/><rect x="196" y="140" width="16" height="16"/><rect x="218" y="140" width="16" height="16"/>
+        </g>
+        <rect x="42" y="74" width="16" height="16" style="fill:var(--wash);stroke:var(--indigo);stroke-width:1.5"/>
+        <rect x="152" y="96" width="16" height="16" style="fill:var(--wash);stroke:var(--indigo);stroke-width:1.5"/>
+        <rect x="108" y="140" width="16" height="16" style="fill:var(--wash);stroke:var(--indigo);stroke-width:1.5"/>
+        <path class="s-l" d="M58 82 L330 74 M168 104 L330 140 M124 148 L330 206"/>
+        <rect class="box" x="336" y="40" width="104" height="68" rx="3"/>
+        <rect class="box" x="336" y="106" width="104" height="68" rx="3"/>
+        <rect class="box" x="336" y="172" width="104" height="68" rx="3"/>
+        <ellipse class="s-i" cx="380" cy="74" rx="26" ry="9"/>
+        <path class="s-i" d="M366 128 V162 H398 V128 M398 136 C 416 136 416 154 398 154"/>
+        <path class="s-i" style="stroke-dasharray:3 3" d="M368 196 V228 M368 196 H404"/>
+        <circle class="f-i" cx="404" cy="196" r="4"/>
+        <text class="lb" x="450" y="80">縁のかたち</text>
+        <text class="lb" x="450" y="146">横から見た輪郭</text>
+        <text class="lb" x="450" y="212">取っ手の位置</text>
+        <text class="lb" x="124" y="34" text-anchor="middle">多数の皮質コラム</text>
+        <text class="lb" x="124" y="180" text-anchor="middle">それぞれが独自のモデルを持つ</text>
+        <text class="ti" x="450" y="262">合わせて「ひとつのカップ」になる</text>
+      </svg>
+      <figcaption>脳は写真を保存しているのではなく、対象の構造と位置関係をモデルにしている。しかもそれを、並列に何通りも持っている。</figcaption>
+    </figure>
+
+    <p>ここで問いが一段深くなる。脳が世界をモデル化しているのなら、「私」もまたモデルなのではないか。</p>
+
+    <p>脳は外界だけをモデル化しているわけではない。自分の身体、感情、記憶、過去の自分、これからの自分も同じようにモデル化している。その結果として「私はここにいる」という自己感覚が成立している可能性がある。<a href="../early-buddhism/">原始仏教</a>が無我として語ってきたものと、脳科学が自己モデルと呼ぶものは、どこかで重なっているのかもしれない。</p>
+
+    <p>そして、ひとつ分けて考えられそうなことがある。仮に「私が音楽を聴いている」という自己認識が薄くなっても、音が聞こえる・気持ちいいという体験そのものは残るのではないか。だとすれば、<span class="err">「私」という感覚と、体験そのものは、同じではない</span>。自己と意識は、切り分けられる可能性がある。</p>
+
+    <p>意識をめぐってはグローバル・ワークスペース理論、統合情報理論、予測処理など複数の理論があり、千の脳理論はそのうち知覚と知能のモデル化を説明するものであって、意識そのものを説明しきる理論ではない。そこは正直に空けておいたほうがいい。</p>
+
+    <div class="q">
+      <p class="q-label">残る問い</p>
+      <ul>
+        <li>「私」という自己モデルは、具体的にどのように形成されるのか。</li>
+        <li>自己モデルがなくても、意識は存在できるのか。</li>
+        <li>「無我」と、脳科学のいう自己モデルは、どこまで似ているのか。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ch" id="ch7">
+    <p class="ch-label">空白</p>
+    <h2>何もしない時間が、整理している</h2>
+
+    <p>作業に集中しているときより、ぼんやりしているときに活発になる脳のネットワークがある。<strong>デフォルト・モード・ネットワーク</strong>——第1章で出てきたDMNだ。安静時に立ち上がり、脳の消費エネルギーのかなりの割合を占める。何もしていない時間の脳は、休んでいるのではなかった。</p>
+
+    <p>DMNが働いているとき、脳は過去の記憶を整理し、未来の出来事をシミュレーションし、自分と他者の関係を俯瞰している。シャワーを浴びているときや散歩の途中に急にアイデアが浮かぶのは、この時間にばらばらだった情報が結び直されているからだと考えられている。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 210" role="img" aria-labelledby="f7-t">
+        <title id="f7-t">情報入力が、ぼんやりする時間を押し縮める</title>
+        <rect x="20" y="78" width="600" height="66" rx="3" style="fill:var(--paper);stroke:var(--indigo-soft);stroke-width:1"/>
+        <rect x="20" y="78" width="450" height="66" rx="3" style="fill:var(--wash);stroke:none"/>
+        <path style="stroke:var(--vermilion);stroke-width:1.5;fill:none" d="M470 70 V152"/>
+        <path class="s-e" d="M486 111 H548" marker-end="url(#ar-e)"/>
+        <path class="s-e" d="M150 38 V70" marker-end="url(#ar-e)"/>
+        <path class="s-e" d="M250 38 V70" marker-end="url(#ar-e)"/>
+        <path class="s-e" d="M350 38 V70" marker-end="url(#ar-e)"/>
+        <text class="te" x="250" y="26" text-anchor="middle">通知・スクロール・検索</text>
+        <text x="245" y="118" text-anchor="middle">集中・処理</text>
+        <text class="lb" x="600" y="118" text-anchor="end">ぼんやり</text>
+        <text class="lb" x="320" y="182" text-anchor="middle">一日の総量は、増えない</text>
+      </svg>
+      <figcaption>入力が絶えないと、切り替えが起きない。削られるのは、いちばん後回しにされやすい空白のほう。</figcaption>
+    </figure>
+
+    <p>問題は、現代の環境がこの空白を奪いやすいことだ。スマホとSNSによって外からの入力が途切れなくなると、DMNが立ち上がる余白が消える。整理と結び直しの時間が確保できない。</p>
+
+    <p>逆に、DMNが過剰に回りすぎるのも具合が悪い。過去への後悔と未来への不安のあいだをぐるぐる回る反芻思考は、このネットワークの活動が止まらなくなった状態として説明される。うつのリスクとも関連が指摘されている。</p>
+
+    <p>つまり必要なのは、集中とぼんやりのどちらか一方ではなく、その切り替えが効くことだ。<a href="../mindfulness/">マインドフルネス</a>の瞑想が過剰なDMNの活動を鎮めるとされるのは、この切り替えの側に働きかけているからだと考えられる。</p>
+
+    <div class="q">
+      <p class="q-label">残る問い</p>
+      <ul>
+        <li>「意識」は、DMNの働きとどう関係しているのか。</li>
+        <li>情報が途切れない時代に、空白をどう設計すれば、DMNは適切に働くのか。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ch" id="ch8">
+    <p class="ch-label">未知</p>
+    <h2>残っている問い</h2>
+
+    <p>ここまでの話は、脳が何をどう処理しているかについてのものだった。予測し、選択し、構成し、作り直す。この情報処理の側は、かなりの解像度で分かってきている。</p>
+
+    <p>分かっていないのは、そこから先だ。なぜその神経活動が「赤く感じる」という主観的な体験になるのか。情報処理の仕組みと、経験されるということは、別の問題として立っている。これは<strong>意識のハードプロブレム</strong>と呼ばれていて、今のところ手がかりも定まっていない。</p>
+
+    <p>脳を構成する物質をミクロに辿っていけば、いずれ<a href="../quantum/">量子力学</a>の世界に行き着く。マクロには脳・身体・自分・他者・世界という豊かな現実がある。そのあいだをどうつなぐのか。意識と量子現象を直接結びつける仮説もあるが、確かめられてはいない。ここは、不思議なものとして一旦そのまま置いておくことにする。</p>
+
+    <p>もうひとつ、新しい問いも増えた。AIも、内部で何かが起きてから言葉として出力される。外から見た構造は、人間の「思いついた瞬間にはもう口から出ている」という体感と、少し似ている。ただし構造が似ていることと、内側で何かが経験されていることは、まったく別の問題だ。その二つを混ぜないでおくことが、たぶんいまは一番大事なところだと思う。</p>
+
+    <blockquote>自分が見ている世界は、自分の脳が作っている。<br>では、それを見ている「自分」とは何なのか。</blockquote>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>専門家ではない個人が調べ、考えたことをまとめた個人的なまとめです。内容の正確性を保証するものではありません。</p>
+    <p><a href="../">← m-note トップ</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
