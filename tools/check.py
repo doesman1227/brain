@@ -24,7 +24,18 @@ def err(page, msg):
     problems.append("%s: %s" % (page, msg))
 
 
-def check(path, name, html):
+def load_css_vars(root):
+    """css/style.css で定義されているカスタムプロパティ名(--xxx)の集合を返す。
+    ファイルが無ければ None を返す（呼び出し側は検査をスキップする）。"""
+    css_path = os.path.join(root, "css", "style.css")
+    if not os.path.exists(css_path):
+        return None
+    with open(css_path, encoding="utf-8") as fh:
+        css = fh.read()
+    return set(re.findall(r"(--[\w-]+)\s*:", css))
+
+
+def check(path, name, html, css_vars=None):
     if '<html lang="ja">' not in html:
         err(name, 'lang="ja" がない')
     if not re.search(r"<title>[^<]+</title>", html):
@@ -72,16 +83,24 @@ def check(path, name, html):
         if not os.path.exists(os.path.join(ROOT, target)):
             err(name, "リンク切れ: %s" % href)
 
+    # 未定義のCSS変数を参照していないか（style.css が見つかった場合のみ）
+    if css_vars is not None:
+        used = set(re.findall(r"var\((--[\w-]+)\)", html))
+        undefined = sorted(used - css_vars)
+        if undefined:
+            err(name, "未定義のCSS変数を参照している: %s" % ", ".join(undefined))
+
 
 def main():
     pages = sorted(f for f in os.listdir(ROOT) if f.endswith(".html"))
     if not pages:
         print("html が1つもない")
         return 1
+    css_vars = load_css_vars(ROOT)
     for f in pages:
         name = f[:-5]
         with open(os.path.join(ROOT, f), encoding="utf-8") as fh:
-            check(os.path.join(ROOT, f), name, fh.read())
+            check(os.path.join(ROOT, f), name, fh.read(), css_vars)
 
     known = set(HUBS)
     for group in STRUCTURE.values():
