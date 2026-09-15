@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>電気で走る ｜ 脳の仕組み</title>
+<meta name="description" content="静止膜電位を保つナトリウムポンプ、閾値を越えて起きる活動電位、全か無かの法則、髄鞘による跳躍伝導、そして発火頻度による符号化まで、ニューロンが電気信号を送る仕組みをたどる、第2部「仕組み」の1本目。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <marker id="ar-i" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+    <marker id="ar-e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+    <marker id="ar-f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="sitemark" href="index.html">BRAIN ｜ 脳の仕組み</a>
+    <a class="back" href="../">← m-note トップ</a>
+  </div>
+</header>
+
+<nav class="crumb" aria-label="パンくず">
+  <a href="index.html">脳の仕組み</a><span>›</span><span>第2部 仕組み</span><span>›</span><span>電気で走る</span>
+</nav>
+
+<main class="wrap">
+
+  <p class="part-label">PART 2 — 仕組み</p>
+  <h1>電気で走る</h1>
+  <p class="lede">前章までで、脳という臓器の材料と配置、そして配線の話を終えた。ここからは第2部に入り、その配線の中を信号がどう伝わっていくのかを見ていく。まず取り上げるのは、もっとも基本的な単位——一本のニューロンの中を信号が電気として走る仕組みだ。</p>
+
+  <section class="ch">
+    <h2>静止しているときも、電池である</h2>
+
+    <p>ニューロンは、細胞膜という薄い膜で内と外を仕切っている。この膜をはさんで、内側と外側ではイオンの濃度がまったく違う。外側にはナトリウムイオンが多く、内側にはカリウムイオンが多い。この偏りのおかげで、何も信号が流れていないときでも、細胞の内側は外側に対しておよそマイナス70ミリボルトというマイナスの電位に保たれている。これを静止膜電位と呼ぶ。</p>
+
+    <p>「静止」という言葉は誤解を招きやすい。この電位差は放っておいて自然に保たれているのではなく、細胞膜に埋め込まれたナトリウムポンプという装置が、絶えずナトリウムイオンを外へ、カリウムイオンを内へとくみ出し続けることで維持されている。ポンプを動かすにはエネルギー（ATP）がいる。つまり静止しているように見えるあいだも、ニューロンはずっと仕事をしている。前章で触れた、脳が体重の2パーセントで全エネルギーの2割を使うという燃費の悪さは、この絶え間ないポンプの働きに多くを負っている。</p>
+
+    <p>この状態は、電池にたとえるとわかりやすい。電池は使われていないときも、内部にはすでに電位差がたくわえられている。ニューロンの静止膜電位も同じで、次にいつでも信号を発射できるよう、あらかじめ充電された状態を保ち続けているのだと考えるといい。</p>
+
+    <p>細胞膜には、ポンプのほかにも、常に少しだけ開いたままのカリウムの通り道（漏洩チャネル）が埋め込まれている。ポンプが濃度差を作り出し、この漏洩チャネルがカリウムイオンを少しずつ外へ逃がし続けることで、内側の電位はマイナス側に引っぱられたところで釣り合う。マイナス70ミリボルトという具体的な数値は、この「くみ出す力」と「漏れ出す力」がつり合う地点として決まっている。片方だけでは成り立たない、動的なつり合いの結果だ。</p>
+  </section>
+
+  <section class="ch">
+    <h2>閾値を越えると、一気に立ち上がる</h2>
+
+    <p>別のニューロンから信号を受け取ると、細胞膜の電位はわずかに揺れ動く。一つひとつの入力による揺れはごく小さく、多くの場合はすぐに収まって、もとの静止電位に戻っていく。しかし多数の入力がほぼ同時に、あるいは短い間隔でくり返し届くと、その揺れは足し合わされて大きくなっていく。この足し算が起きる場所が、細胞体から軸索が伸び出す付け根の部分——軸索小丘と呼ばれる部位だ。ここが、活動電位を起こすかどうかを判定する引き金の役目を担っている。</p>
+
+    <p>足し合わされ方には二通りある。複数の場所から届いた入力が同時に重なる場合を空間的加重、一つの場所からの入力が短い間隔で立て続けに届いて重なる場合を時間的加重と呼ぶ。実際にはこの二つが組み合わさって、軸索小丘に届く電位の総量が決まっている。</p>
+
+    <p>足し合わされた電位がある値——およそマイナス55ミリボルト——を越えると、様子が一変する。この値を閾値と呼ぶ。</p>
+
+    <p>閾値を越えた瞬間、電位依存性のナトリウムチャネルが一斉に開く。外側に多かったナトリウムイオンが濃度差にしたがって内側へ一気に流れ込み、内側の電位は急激にプラス側へ振れる。ピークではおよそプラス40ミリボルトにまで達する。この短時間の電位の乱高下を活動電位、あるいは英語でスパイクと呼ぶ。</p>
+
+    <p>ピークに達するとナトリウムチャネルはすぐに閉じ、代わって電位依存性のカリウムチャネルが開く。カリウムイオンが外へ流れ出し、電位は急速にマイナス側へ戻っていく。これを再分極と呼ぶ。この戻りは静止電位でぴたりと止まらず、いったんマイナス70ミリボルトよりも深いところまで行き過ぎる。これを過分極と呼ぶ。その後、ポンプとチャネルの働きで、電位はゆっくりと静止電位に復帰する。</p>
+
+    <p>この一連の流れのあいだ、チャネルの多くは開いた直後にいったん閉じて働けない状態に入る。これを不応期と呼ぶ。そのため同じ場所がすぐに二度目の活動電位を起こすことはできない。信号が軸索を伝わっていくとき、すでに発火し終えたばかりの場所には戻れないおかげで、活動電位は逆流せず、常に一方向へ進んでいく。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 320" role="img" aria-labelledby="fap-t">
+        <title id="fap-t">活動電位の経過</title>
+
+        <path class="s-l" d="M80 20 V282"/>
+        <path class="s-l" d="M80 282 H612"/>
+
+        <path class="s-l" d="M74 241 H80"/>
+        <path class="s-l" d="M74 212 H80"/>
+        <path class="s-l" d="M74 107 H80"/>
+        <path class="s-l" d="M74 30 H80"/>
+        <text x="68" y="245" text-anchor="end" style="font-size:11px">−70</text>
+        <text x="68" y="216" text-anchor="end" style="font-size:11px">−55</text>
+        <text x="68" y="111" text-anchor="end" style="font-size:11px">0</text>
+        <text x="68" y="34" text-anchor="end" style="font-size:11px">+40</text>
+        <text class="lb" x="46" y="26" text-anchor="middle">mV</text>
+
+        <path class="s-l" d="M184 282 V288"/>
+        <path class="s-l" d="M288 282 V288"/>
+        <path class="s-l" d="M392 282 V288"/>
+        <path class="s-l" d="M496 282 V288"/>
+        <text x="184" y="302" text-anchor="middle" style="font-size:11px">1</text>
+        <text x="288" y="302" text-anchor="middle" style="font-size:11px">2</text>
+        <text x="392" y="302" text-anchor="middle" style="font-size:11px">3</text>
+        <text x="496" y="302" text-anchor="middle" style="font-size:11px">4</text>
+        <text class="lb" x="580" y="302" text-anchor="middle">ミリ秒</text>
+
+        <path class="s-e" d="M80 212 H612"/>
+        <text class="te" x="606" y="204" text-anchor="end">閾値 −55mV</text>
+
+        <path class="s-i" style="stroke-width:2.5" d="M80 241 L184 241 C196 241 205 60 215 30 C230 -5 245 150 260 241 C270 255 285 270 309 270 C350 270 420 250 496 241 L612 241"/>
+
+        <circle class="f-i" cx="215" cy="30" r="3.5"/>
+        <circle class="f-i" cx="309" cy="270" r="3.5"/>
+      </svg>
+      <figcaption>閾値を越えると膜電位は一気にプラスへ振れ、ピークのあと静止電位より深く落ち込む過分極を経て戻っていく。この一往復が一つの活動電位。</figcaption>
+    </figure>
+  </section>
+
+  <section class="ch">
+    <h2>全か無か</h2>
+
+    <p>ここで注目したいのは、活動電位の起き方そのものの性質だ。入力が閾値に届かないうちは、どれだけ膜電位が揺れても、何も起きない。揺れはそのまま収まり、静止電位に戻るだけだ。中途半端な、小さい活動電位のようなものは存在しない。</p>
+
+    <p>逆に、いったん閾値を越えてしまえば、そのあとに起きる活動電位の大きさは、入力の強さにはよらない。閾値をわずかに越えても、大きく越えても、出てくる活動電位のピークはほぼ同じ高さになる。強い入力が大きな信号を、弱い入力が小さな信号をつくるわけではない。起きるか起きないかのどちらかしかなく、起きた場合の大きさは常に同じ——これを全か無かの法則と呼ぶ。</p>
+
+    <p>つまり一本の活動電位は、アナログな量の大小ではなく、デジタルな「あり・なし」に近い性質を持っている。銃の引き金のようなものだと考えるとわかりやすい。引き金を軽く引いただけでは弾は出ないし、強く引いたからといって弾の勢いが変わるわけでもない。引き切るところまでいけば、あとは同じ弾が同じように発射される。</p>
+
+    <p>だとすると、入力の強さという情報はどこへ行ってしまうのか、という疑問が当然出てくる。答えは、活動電位そのものの大きさではなく、それが起きる頻度にある。この点は章の最後で見る。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 280" role="img" aria-labelledby="fthr-t">
+        <title id="fthr-t">閾値と全か無かの法則</title>
+
+        <path class="s-l" style="stroke-dasharray:4 5" d="M320 10 V262"/>
+
+        <text x="160" y="24" text-anchor="middle">閾値に届かない入力</text>
+        <path class="s-l" d="M50 210 H280"/>
+        <path class="s-e" d="M50 140 H280"/>
+        <text class="lb" x="55" y="134">閾値</text>
+        <path class="s-f" d="M85 210 Q100 180 115 210"/>
+        <path class="s-f" d="M155 210 Q170 165 185 210"/>
+        <path class="s-f" d="M225 210 Q240 190 255 210"/>
+        <text x="160" y="248" text-anchor="middle">→ 何も起きない</text>
+
+        <text x="480" y="24" text-anchor="middle">閾値を越えた入力</text>
+        <path class="s-l" d="M360 210 H600"/>
+        <path class="s-e" d="M360 140 H600"/>
+        <text class="lb" x="365" y="134">閾値</text>
+        <path class="s-f" d="M380 210 L405 140"/>
+        <path class="s-f" d="M450 210 L475 140"/>
+        <path class="s-f" d="M520 210 L545 140"/>
+        <path class="f-i" d="M400 140 L410 40 L420 140 Z"/>
+        <path class="f-i" d="M470 140 L480 40 L490 140 Z"/>
+        <path class="f-i" d="M540 140 L550 40 L560 140 Z"/>
+        <path class="s-l" style="stroke-dasharray:3 4" d="M390 40 H570"/>
+        <text x="480" y="248" text-anchor="middle">→ 必ず同じ高さのスパイク</text>
+      </svg>
+      <figcaption>閾値に届かない入力は反応を残さない。閾値を越えた入力は、その越え方の大小によらず、常に同じ高さのスパイクを生む。</figcaption>
+    </figure>
+  </section>
+
+  <section class="ch">
+    <h2>髄鞘が、速さを生む</h2>
+
+    <p>活動電位は軸索の根もとで生まれると、そこから軸索の末端まで伝わっていく。この伝導の速さを大きく左右しているのが、細胞の章で触れた希突起膠細胞のつくる髄鞘だ。</p>
+
+    <p>髄鞘は、軸索に巻きつく脂質を主成分とした鞘で、電気を通しにくい絶縁体として働く。ただし軸索の全長を隙間なく覆っているわけではなく、一定の間隔でとぎれており、その隙間ではむき出しの軸索膜が顔を出している。このとぎれ目をランビエ絞輪と呼ぶ。</p>
+
+    <p>髄鞘に覆われた区間では電気信号がほとんど減衰せずに素早く伝わり、活動電位が実際に起きるのはランビエ絞輪のところだけになる。信号はいわば絞輪から次の絞輪へと飛び石を跳ぶように伝わっていく。これを跳躍伝導と呼ぶ。髄鞘のない軸索は、全長にわたって一区間ずつ律儀に活動電位を起こしながら伝えていくしかなく、伝導の速さは秒速1〜2メートルほどにとどまる。これに対して太く髄鞘の発達した軸索では、跳躍伝導によって秒速100メートルを超える速さが出ることもある。ケタで見て二桁近い差になる。</p>
+
+    <p>髄鞘には、速さを稼ぐだけでなく、軸索を細く保てるという利点もある。同じ太さの活動電位を発生させる区間を軸索の全長に敷き詰める必要がないため、限られた空間の中に、より多くの軸索を通すことができる。頭蓋骨という決まった容積の中に配線を詰め込まなければならない脳にとって、これも小さくない利点だ。</p>
+
+    <p>髄鞘が壊れる病気として知られているのが多発性硬化症だ。免疫の仕組みが誤って自分自身の髄鞘を攻撃し、あちこちで絶縁が失われる結果、信号の伝導が乱れたり遅れたりして、しびれや視覚の異常、運動のぎこちなさといった症状が現れる。ふだんは意識されない部品が失われて初めて、その働きの大きさが実感される例だと言える。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 240" role="img" aria-labelledby="fmye-t">
+        <title id="fmye-t">髄鞘と跳躍伝導</title>
+
+        <text x="320" y="14" text-anchor="middle">髄鞘のある軸索（速い）</text>
+        <path class="s-l" d="M50 60 H590"/>
+        <rect class="box" x="50" y="47" width="90" height="26" rx="6"/>
+        <rect class="box" x="165" y="47" width="90" height="26" rx="6"/>
+        <rect class="box" x="280" y="47" width="90" height="26" rx="6"/>
+        <rect class="box" x="395" y="47" width="90" height="26" rx="6"/>
+        <rect class="box" x="510" y="47" width="80" height="26" rx="6"/>
+        <circle class="f-e" cx="152.5" cy="60" r="2.5"/>
+        <circle class="f-e" cx="267.5" cy="60" r="2.5"/>
+        <circle class="f-e" cx="382.5" cy="60" r="2.5"/>
+        <circle class="f-e" cx="497.5" cy="60" r="2.5"/>
+
+        <path class="s-i" style="stroke-width:2" d="M152.5 55 Q210 22 267.5 55" marker-end="url(#ar-i)"/>
+        <path class="s-i" style="stroke-width:2" d="M267.5 55 Q325 22 382.5 55" marker-end="url(#ar-i)"/>
+        <path class="s-i" style="stroke-width:2" d="M382.5 55 Q440 22 497.5 55" marker-end="url(#ar-i)"/>
+
+        <path class="s-l" d="M95 100 V73"/>
+        <text class="lb" x="95" y="112" text-anchor="middle">髄鞘</text>
+        <path class="s-l" d="M267.5 100 V73"/>
+        <text class="lb" x="267.5" y="112" text-anchor="middle">ランビエ絞輪</text>
+
+        <text x="320" y="150" text-anchor="middle">髄鞘がない軸索（遅い）</text>
+        <path class="s-l" d="M50 185 H590"/>
+        <path class="s-f" d="M60 185 H94" marker-end="url(#ar-f)"/>
+        <path class="s-f" d="M114 185 H148" marker-end="url(#ar-f)"/>
+        <path class="s-f" d="M168 185 H202" marker-end="url(#ar-f)"/>
+        <path class="s-f" d="M222 185 H256" marker-end="url(#ar-f)"/>
+        <path class="s-f" d="M276 185 H310" marker-end="url(#ar-f)"/>
+        <path class="s-f" d="M330 185 H364" marker-end="url(#ar-f)"/>
+        <path class="s-f" d="M384 185 H418" marker-end="url(#ar-f)"/>
+        <path class="s-f" d="M438 185 H472" marker-end="url(#ar-f)"/>
+        <path class="s-f" d="M492 185 H526" marker-end="url(#ar-f)"/>
+        <path class="s-f" d="M546 185 H580" marker-end="url(#ar-f)"/>
+        <text class="lb" x="320" y="215" text-anchor="middle">全長を律儀に伝わる分、時間がかかる</text>
+      </svg>
+      <figcaption>髄鞘に覆われた軸索では信号がランビエ絞輪から絞輪へと跳ぶように伝わる。髄鞘のない軸索は全長を一区間ずつ伝えるため、同じ距離でも時間がかかる。</figcaption>
+    </figure>
+  </section>
+
+  <section class="ch">
+    <h2>強さは、頻度で伝える</h2>
+
+    <p>全か無かの法則にしたがう以上、一本の活動電位の大きさで刺激の強さを表すことはできない。では脳は、弱い刺激と強い刺激をどう区別しているのか。答えは、単位時間あたりに何回発火するか、という頻度にある。</p>
+
+    <p>弱い刺激が入ったニューロンは、まばらにしか発火しない。強い刺激が入ったニューロンは、同じ大きさの活動電位を、より高い頻度でくり返し発火させる。刺激の強さという連続的な量は、活動電位という全か無かの単位に変換されたうえで、その発射間隔の疎密として表現し直されている。これを頻度符号化と呼ぶ。皮膚に触れるものの重さや、音の大きさといった感覚の強弱も、脳の中ではつまるところ、こうした発火頻度の違いとして扱われている。</p>
+
+    <p>もっとも、発火の頻度には上限がある。一つ前の活動電位が終わったあとの不応期が終わらないうちは、次の活動電位を起こせない。刺激がどれほど強くても、ニューロンが1秒間に発火できる回数には、この不応期の長さで決まる天井がある。強さの表現は頻度に置き換えられるが、その頻度そのものも無限には伸ばせない、という制約を抱えている。</p>
+
+    <p>この頻度符号化という仕組みのおかげで、活動電位という単純で頑丈な信号だけを使いながら、軸索は雑音に強い形で情報を長距離運ぶことができる。もっとも、この信号がそのまま次の細胞に電気的に伝わるわけではない。軸索の末端まで届いた活動電位は、そこで化学的な仕組みに変換されて隣の細胞へと橋渡しされる。その受け渡しの場——シナプス——を、次の章で見ていく。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 260" role="img" aria-labelledby="frate-t">
+        <title id="frate-t">発火頻度で強さを伝える</title>
+
+        <text class="ti" x="60" y="16">弱い刺激</text>
+        <text class="lb" x="600" y="16" text-anchor="end">まばら（低頻度）</text>
+        <path class="s-l" d="M60 70 H600"/>
+        <path class="f-i" d="M96 70 L100 25 L104 70 Z"/>
+        <path class="f-i" d="M216 70 L220 25 L224 70 Z"/>
+        <path class="f-i" d="M336 70 L340 25 L344 70 Z"/>
+        <path class="f-i" d="M456 70 L460 25 L464 70 Z"/>
+        <path class="f-i" d="M556 70 L560 25 L564 70 Z"/>
+
+        <text class="te" x="60" y="136">強い刺激</text>
+        <text class="lb" x="600" y="136" text-anchor="end">密（高頻度）</text>
+        <path class="s-l" d="M60 190 H600"/>
+        <path class="f-e" d="M77 190 L80 145 L83 190 Z"/>
+        <path class="f-e" d="M107 190 L110 145 L113 190 Z"/>
+        <path class="f-e" d="M137 190 L140 145 L143 190 Z"/>
+        <path class="f-e" d="M167 190 L170 145 L173 190 Z"/>
+        <path class="f-e" d="M197 190 L200 145 L203 190 Z"/>
+        <path class="f-e" d="M227 190 L230 145 L233 190 Z"/>
+        <path class="f-e" d="M257 190 L260 145 L263 190 Z"/>
+        <path class="f-e" d="M287 190 L290 145 L293 190 Z"/>
+        <path class="f-e" d="M317 190 L320 145 L323 190 Z"/>
+        <path class="f-e" d="M347 190 L350 145 L353 190 Z"/>
+        <path class="f-e" d="M377 190 L380 145 L383 190 Z"/>
+        <path class="f-e" d="M407 190 L410 145 L413 190 Z"/>
+        <path class="f-e" d="M437 190 L440 145 L443 190 Z"/>
+        <path class="f-e" d="M467 190 L470 145 L473 190 Z"/>
+        <path class="f-e" d="M497 190 L500 145 L503 190 Z"/>
+        <path class="f-e" d="M527 190 L530 145 L533 190 Z"/>
+        <path class="f-e" d="M557 190 L560 145 L563 190 Z"/>
+        <path class="f-e" d="M587 190 L590 145 L593 190 Z"/>
+
+        <text class="lb" x="330" y="235" text-anchor="middle">スパイクの高さはどちらも同じ。間隔だけが変わる。</text>
+      </svg>
+      <figcaption>弱い刺激はまばらに、強い刺激は高頻度に発火する。個々のスパイクの高さは変わらず、間隔の疎密だけが強さを伝える。</figcaption>
+    </figure>
+  </section>
+
+</main>
+
+<nav class="pager" aria-label="ページ送り">
+  <a class="prev" href="networks.html"><span class="k">前へ</span><span class="t">03 つながりが機能をつくる</span></a>
+</nav>
+
+<nav class="sitemap" aria-label="このサイトの地図">
+  <h2>このサイトの地図</h2>
+  <div class="grp">
+    <p class="k">第1部 基本</p>
+    <ul>
+      <li><a href="cells.html">01 脳をつくる細胞</a></li>
+      <li><a href="anatomy.html">02 脳の地図</a></li>
+      <li><a href="networks.html">03 つながりが機能をつくる</a></li>
+    </ul>
+  </div>
+  <div class="grp">
+    <p class="k">第2部 仕組み</p>
+    <ul>
+      <li><a href="signal.html">04 電気で走る</a></li>
+    </ul>
+  </div>
+</nav>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>専門家ではない個人が調べ、考えたことをまとめた個人的なまとめです。内容の正確性を保証するものではありません。</p>
+    <p><a href="../">← m-note トップ</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
