@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>脳は誤差だけを見ている ｜ コラム ｜ 脳の仕組み</title>
+<meta name="description" content="脳は世界をそのまま受け取ってはいない。つねに「こう見えるはずだ」という予測を立て、感覚が返すのはそのズレだけだとする予測符号化という考え方を、感じる・神経伝達物質の章の内容とつなげて見直すコラム。錯視や思い込みが生まれる理由、認知行動療法とのつながりにも触れる。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <marker id="ar-i" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+    <marker id="ar-e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+    <marker id="ar-f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="sitemark" href="index.html">BRAIN ｜ 脳の仕組み</a>
+    <a class="back" href="../">← m-note トップ</a>
+  </div>
+</header>
+
+<nav class="crumb" aria-label="パンくず">
+  <a href="index.html">脳の仕組み</a><span>›</span><a href="columns.html" style="margin:0 8px">コラム</a><span>›</span><span>脳は誤差だけを見ている</span>
+</nav>
+
+<main class="wrap">
+
+  <p class="col-label">COLUMN</p>
+  <h1>脳は誤差だけを見ている</h1>
+  <p class="lede">感じるの章や神経伝達物質の章で、「予測とのズレ」という言葉が何度か顔を出した。ここでは寄り道をして、その考え方そのものを正面から見ておく。本編の一本道から外れた話なので、読み飛ばしても先の章にはつながる。</p>
+
+  <section class="ch">
+
+    <p>知能とは何か、と問われると、つい知識の量を思い浮かべる。だが脳のやっていることを見ると、そうではないらしい。世界の構造を学習してモデルを作り、そのモデルで次を予測し、予測にもとづいて行動し、外れた分でモデルを更新する。この<strong>世界モデル</strong>のループこそが、知能の本体に近い。</p>
+
+    <p>脳はカメラのように外の世界を写し取っている——直感的にはそう思いたくなる。実際の仕組みは、ほとんど逆だった。</p>
+
+    <p>脳はつねに「次に何が起こるか」「何が見えるはずか」を過去の経験から予測し、自前でシミュレーションを走らせている。目や耳から入ってくる情報は、その予測を丸ごと置き換えるのではない。予測と現実の<span class="err">ズレ</span>だけが上へ報告され、予測の修正に使われる。予測が当たっているかぎり、感覚からの信号はほとんど上がってこない。この考え方は<strong>予測符号化</strong>、より大きな枠組みでは<strong>自由エネルギー原理</strong>と呼ばれている。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 640 230" role="img" aria-labelledby="f2-t">
+        <title id="f2-t">予測と誤差のループ</title>
+        <rect class="box" x="20" y="80" width="130" height="70" rx="3"/>
+        <rect class="box" x="250" y="80" width="140" height="70" rx="3"/>
+        <rect class="box" x="490" y="80" width="130" height="70" rx="3"/>
+        <path class="s-f" d="M158 115 H242" marker-end="url(#ar-f)"/>
+        <path class="s-i" d="M508 76 C 470 22 380 22 334 70" marker-end="url(#ar-i)"/>
+        <path class="s-e" d="M352 156 C 396 206 466 208 504 162" marker-end="url(#ar-e)"/>
+        <text x="85" y="122" text-anchor="middle">世界</text>
+        <text x="320" y="110" text-anchor="middle">感覚器</text>
+        <text class="lb" x="320" y="134" text-anchor="middle">目・耳・皮膚</text>
+        <text x="555" y="122" text-anchor="middle">脳</text>
+        <text class="ti" x="420" y="28" text-anchor="middle">予測「こう見えるはずだ」</text>
+        <text class="te" x="428" y="214" text-anchor="middle">ズレた分だけが返る</text>
+      </svg>
+      <figcaption>太い流れは上から下へ向かう予測のほう。感覚器から脳へ上がるのは、予測が外れた分だけ。</figcaption>
+    </figure>
+
+    <p>この仕組みがあるから、私たちは雑踏の中でも知人の声を聞き分けられるし、半分隠れた物体を全体として認識できる。足りない部分は、予測が埋めている。処理すべき情報量も劇的に減る。すべてを毎回ゼロから見ていたら、脳は追いつかない。</p>
+
+    <p>同時にこれは、思い込みや偏見がなぜ生じるかの説明にもなっている。予測が強すぎると、感覚入力よりも予測のほうが優先されてしまう。錯視はその極端な例で、目に届いている光は同じなのに、文脈が変われば見え方が変わる。私たちは、自分が見たいように世界を見ている——その科学的な裏づけがここにある。</p>
+
+    <p>どの情報をどれだけ信頼するか、という重みづけのバランスが崩れた状態として、いくつかの精神疾患を説明しようとする研究もある。逆に言えば、予測は書き換えられる余地があるということでもある。思い込みを検証して更新していく<a href="../cbt/">認知行動療法</a>のアプローチは、この層に働きかけている。</p>
+
+    <div class="q">
+      <p class="q-label">残る問い</p>
+      <ul>
+        <li>「意識」や「私」という感覚も、予測誤差を最小化するための仕組みが生んだ副産物なのだろうか。</li>
+        <li>自分の脳が立てている予測に、どこまで自分で気づき、意図的に書き換えられるのか。</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <div class="col-related" style="margin-top:56px;padding-top:24px;border-top:1px solid var(--line)">
+    <p style="margin:0 0 10px;font-size:13px;color:var(--ink-faint)"><a href="columns.html">← コラム一覧へ</a></p>
+    <p style="margin:0;font-size:13px;color:var(--ink-faint)">関連するページ — <a href="perceive.html">感じる</a>／<a href="chemicals.html">神経伝達物質</a></p>
+  </div>
+
+</main>
+
+<nav class="sitemap" aria-label="このサイトの地図">
+  <h2>このサイトの地図</h2>
+  <div class="grp">
+    <p class="k">第1部 基本</p>
+    <ul>
+      <li><a href="cells.html">01 脳をつくる細胞</a></li>
+      <li><a href="anatomy.html">02 脳の地図</a></li>
+      <li><a href="networks.html">03 つながりが機能をつくる</a></li>
+    </ul>
+  </div>
+  <div class="grp">
+    <p class="k">第2部 仕組み</p>
+    <ul>
+      <li><a href="signal.html">04 電気で走る</a></li>
+      <li><a href="synapse.html">05 すきまを渡る</a></li>
+      <li><a href="chemicals.html">06 神経伝達物質</a></li>
+    </ul>
+  </div>
+  <div class="grp">
+    <p class="k">第3部 はたらき</p>
+    <ul>
+      <li><a href="perceive.html">07 感じる</a></li>
+      <li><a href="remember.html">08 覚える・思い出す</a></li>
+      <li><a href="attention.html">09 注意と情動</a></li>
+      <li><a href="decide.html">10 決める・動く</a></li>
+    </ul>
+  </div>
+  <div class="grp">
+    <p class="k">コラム</p>
+    <ul>
+      <li><a href="columns.html">コラム一覧</a></li>
+      <li><a href="prediction.html">脳は誤差だけを見ている</a></li>
+      <li><a href="free-energy.html">自由エネルギー原理</a></li>
+    </ul>
+  </div>
+</nav>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>専門家ではない個人が調べ、考えたことをまとめた個人的なまとめです。内容の正確性を保証するものではありません。</p>
+    <p><a href="../">← m-note トップ</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
