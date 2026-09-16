@@ -220,7 +220,8 @@ td:first-child { white-space: nowrap; color: var(--primary); font-weight: 500; }
 
 /* パンくず */
 .crumb { max-width: 720px; margin: 0 auto; padding: 18px 24px 0; font-size: 12.5px; color: var(--ink-faint); }
-.crumb a { color: var(--ink-soft); text-decoration: none; }
+.crumb a { color: var(--ink-soft); text-decoration: none; margin: 0 8px; }
+.crumb a:first-child { margin-left: 0; }
 .crumb a:hover { color: var(--primary); }
 .crumb span { margin: 0 8px; }
 
@@ -245,6 +246,11 @@ td:first-child { white-space: nowrap; color: var(--primary); font-weight: 500; }
 .colcard .d { display: block; font-size: 12.5px; color: var(--ink-faint); line-height: 1.7; }
 .colcard > div.is-pending { cursor: default; }
 .colcard > div.is-pending .t { color: var(--ink-faint); }
+
+/* コラム末尾の関連ページブロック（.wrap の内側に置く前提。左右位置は本文と揃う） */
+.col-related { margin: 56px 0 0; padding-top: 24px; border-top: 1px solid var(--line); }
+.col-related p { margin: 0 0 10px; font-size: 13px; color: var(--ink-faint); }
+.col-related p:last-child { margin-bottom: 0; }
 
 /* 本編カード（三部の入口。準備中は <a> を持たないため、要素自身にスタイルを当てる） */
 .partcard {
