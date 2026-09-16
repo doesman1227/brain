@@ -9,8 +9,8 @@ STRUCTURE = {
     "第1部 基本":   ["cells", "anatomy", "networks"],
     "第2部 仕組み": ["signal", "synapse", "chemicals"],
     "第3部 はたらき": ["perceive", "remember", "attention", "decide"],
-    "コラム": ["prediction", "free-energy", "thousand-brains", "dmn",
-               "self-model", "consciousness", "anatta", "brain-and-ai"],
+    "コラム": ["prediction", "free-energy", "thousand-brains", "intelligence",
+               "dmn", "self-model", "consciousness", "anatta", "brain-and-ai"],
 }
 HUBS = ["index", "columns"]
 
