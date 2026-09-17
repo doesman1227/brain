@@ -155,11 +155,11 @@ blockquote {
   margin-top: 16px; font-size: 12.5px; line-height: 1.75; color: var(--ink-faint);
 }
 .fig text {
-  font-size: 13px; fill: var(--ink-soft);
+  font-size: 14.5px; fill: var(--ink-soft);
 }
-.fig .lb { font-size: 11px; letter-spacing: .1em; fill: var(--ink-faint); }
-.fig .ti { fill: var(--primary); font-size: 12px; }
-.fig .te { fill: var(--accent); font-size: 12px; }
+.fig .lb { font-size: 12.5px; letter-spacing: .1em; fill: var(--ink-faint); }
+.fig .ti { fill: var(--primary); font-size: 13.5px; }
+.fig .te { fill: var(--accent); font-size: 13.5px; }
 .s-i { stroke: var(--primary); fill: none; stroke-width: 1.5; }
 .s-e { stroke: var(--accent); fill: none; stroke-width: 1.5; stroke-dasharray: 5 5; }
 .s-l { stroke: var(--line); fill: none; stroke-width: 1; }
@@ -195,6 +195,89 @@ table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420p
 th, td { text-align: left; padding: 11px 10px 11px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { font-weight: 700; color: var(--ink-soft); font-size: 12px; letter-spacing: .08em; white-space: nowrap; }
 td:first-child { white-space: nowrap; color: var(--primary); font-weight: 500; }
+
+/* ---------- 要点カード ---------- */
+.summary {
+  margin: 0 0 8px; padding: 20px 22px 18px;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--r-card); box-shadow: var(--shadow);
+}
+.summary .k {
+  display: block; margin: 0 0 13px;
+  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Noto Sans JP", sans-serif;
+  font-weight: 700; font-size: 11px; letter-spacing: .2em; color: var(--primary);
+}
+.summary ul { margin: 0; padding: 0; list-style: none; }
+.summary li {
+  position: relative; margin: 0 0 11px; padding-left: 24px;
+  font-size: 14.5px; line-height: 1.85;
+}
+.summary li::before {
+  content: ""; position: absolute; left: 4px; top: .78em;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--primary-soft);
+}
+.summary li:last-child { margin-bottom: 0; }
+
+/* ---------- 大事な一文 ---------- */
+.keypoint {
+  margin: 38px 0; padding: 2px 0 2px 22px;
+  border-left: 3px solid var(--primary);
+  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Noto Sans JP", sans-serif;
+  font-weight: 700; color: var(--primary);
+  font-size: clamp(16px, 4.3vw, 19px); line-height: 1.85;
+}
+
+/* ---------- 手順リスト ---------- */
+.steps { margin: 32px 0; padding: 0; list-style: none; counter-reset: st; }
+.steps > li {
+  position: relative; margin: 0 0 22px; padding: 0 0 0 46px;
+  counter-increment: st;
+}
+.steps > li::before {
+  content: counter(st);
+  position: absolute; left: 0; top: 1px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--paper); border: 1px solid var(--primary-soft);
+  color: var(--primary); font-size: 12.5px;
+  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.steps > li::after {
+  content: ""; position: absolute; left: 14px; top: 34px; bottom: -18px;
+  width: 1px; background: var(--line);
+}
+.steps > li:last-child { margin-bottom: 0; }
+.steps > li:last-child::after { display: none; }
+.steps .t {
+  display: block; margin: 2px 0 5px; font-weight: 700; color: var(--ink);
+}
+.steps p { margin: 0; font-size: 14.5px; line-height: 1.85; color: var(--ink-soft); }
+
+/* ---------- 用語のひとこと ---------- */
+.terms { margin: 32px 0; padding: 16px 20px; background: var(--wash); border-radius: var(--r-card); }
+.terms .k {
+  display: block; margin: 0 0 10px;
+  font-size: 11px; letter-spacing: .2em; color: var(--ink-faint);
+}
+.terms dl { margin: 0; }
+.terms dt { font-weight: 700; color: var(--primary); font-size: 14px; margin: 12px 0 0; }
+.terms dt:first-of-type { margin-top: 0; }
+.terms dd { margin: 3px 0 0; font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
+
+/* ---------- 並べて見る ---------- */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+.duo .card {
+  padding: 16px 18px; background: var(--paper);
+  border: 1px solid var(--line); border-radius: var(--r-card);
+}
+.duo .card .k {
+  display: block; margin: 0 0 7px;
+  font-size: 11px; letter-spacing: .16em; color: var(--primary);
+}
+.duo .card .t { display: block; margin: 0 0 6px; font-weight: 700; }
+.duo .card p { margin: 0; font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
+@media (max-width: 560px) { .duo { grid-template-columns: 1fr; } }
 
 /* ---------- open question block (signature) ---------- */
 .q {
